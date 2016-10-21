@@ -1,0 +1,18 @@
+{
+    defaultType:default, 
+    menuConfig:{
+        default:[
+            {
+                icon:'fa-file-text-o',
+                text:'管理控制台',
+                children:[
+                    {
+                        url:'/adm/console/forConsole',
+                        icon:'fa-internet-explorer',
+                        text:'监控台'
+                    }
+                ]
+            }
+        ]
+    }
+}

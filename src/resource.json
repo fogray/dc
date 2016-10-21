@@ -1,0 +1,9 @@
+[
+	{
+		url:'/**',
+		name:'所有URL',
+		permit:'all'
+	
+	}
+]
+
