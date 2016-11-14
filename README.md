@@ -93,6 +93,12 @@ POST /api/app/{tenant}/services/{service_id}/stop
 ```
 停止service，原理同start
 
+###Scale a service
+```
+POST /api/app/{tenant}/services/{service_id}/scale -d '{replicas:<scale number>}'
+```
+修改service的task数
+
 ##2、Container API
 使用租户id匹配container的label来实现指定租户的service操作：com.dc.inspur.tenant=< tenant-id >
 ###List containers
