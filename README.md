@@ -47,7 +47,7 @@ curl -H 'Content-type:application/json' \
 
 ###Update a service
 ```
-PUT /api/app/{tenant}/services/${service_id}?version=<service-version> -d '更新数据JSON'
+PUT /api/app/{tenant}/services/{service_id}?version=<service-version> -d '更新数据JSON'
 ```
 更新指定service  
 提交数据JSON：
@@ -64,7 +64,7 @@ curl -H 'Content-type:application/json' \
 
 ###Delete a service
 ```
-DELETE /api/app/{tenant}/services/${service_id}
+DELETE /api/app/{tenant}/services/{service_id}
 ```
 删除指定service  
 测试：
@@ -76,7 +76,7 @@ curl -H 'Content-type:application/json' \
 
 ###List all containers
 ```
-GET /api/app/{tenant}/services/${service_id}/containers
+GET /api/app/{tenant}/services/{service_id}/containers
 ```
 列出指定租户下指定service的所有container
 
@@ -115,7 +115,7 @@ GET /api/app/{tenant}/containers/{container-id}
 
 ###Start a container
 ```
-POST /api/app/{tenant}/containers/{container-id{/start
+POST /api/app/{tenant}/containers/{container-id}/start
 ```
 启动container
 
