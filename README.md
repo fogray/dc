@@ -94,7 +94,7 @@ POST /api/app/{tenant}/services/{service_id}/stop
 停止service，原理同start
 
 ##2、Container API
-使用租户id匹配container的label来实现指定租户的service操作：com.dc.inspur.tenant=<tenant-id>
+使用租户id匹配container的label来实现指定租户的service操作：com.dc.inspur.tenant=< tenant-id >
 ###List containers
 ```
 GET /api/app/<tenant>/containers
