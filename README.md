@@ -1,4 +1,4 @@
-与IAM组件集成，itoken使用用户登录IAM后Cookie中的itoken  
+与IAM组件集成，itoken使用用户登录IAM后Cookie中的itoken，每一次请求均先验证itoken中租户
 
 ##1、Service
 ###Create service
