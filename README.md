@@ -97,7 +97,7 @@ POST /api/app/{tenant}/services/{service_id}/stop
 使用租户id匹配container的label来实现指定租户的service操作：com.dc.inspur.tenant=< tenant-id >
 ###List containers
 ```
-GET /api/app/<tenant>/containers
+GET /api/app/{tenant}/containers
 ```
 列出指定租户下所有container  
 测试：
@@ -109,24 +109,35 @@ curl -H 'Content-type:application/json' \
 
 ###Inspect a container
 ```
-GET /api/app/<tenant>/containers/<container-id>
+GET /api/app/{tenant}/containers/{container-id}
 ```
 查询指定container
 
 ###Start a container
 ```
-POST /api/app/<tenant>/containers/<container-id>/start
+POST /api/app/{tenant}/containers/{container-id{/start
 ```
 启动container
 
 ###Stop a container
 ```
-POST /api/app/<tenant>/containers/<container-id>/stop
+POST /api/app/{tenant}/containers/{container-id}/stop
 ```
 停止container
 
 ###Remove a container
 ```
-DELETE /api/app/<tenant>/containers/<container-id>
+DELETE /api/app/{tenant}/containers/{container-id}
 ```
 删除container
+
+###Container log
+```
+GET /api/app/{tenant}/container/{container_id}/logs
+```
+查询container的启动log  
+查询参数：
+* stdout：查询stdout log，与stderr二选一，可选值为1(True、true)、0(False、false)
+* stderr：查询stderr log
+* since：指定log的开始时间，unix timestamp类型，默认0
+
