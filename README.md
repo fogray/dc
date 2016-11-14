@@ -1,3 +1,5 @@
+与IAM组件集成，itoken使用用户登录IAM后Cookie中的itoken  
+
 ##1、Service
 ###Create service
 ```
