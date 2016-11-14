@@ -1,6 +1,7 @@
 与IAM组件集成，itoken使用用户登录IAM后Cookie中的itoken，每一次请求均先验证itoken中租户
 
-##1、Service
+##1、Service API
+service名称包括租户id和自定义名称两部分组成，每次service请求，使用租户id匹配service名称来实现指定租户的service操作
 ###Create service
 ```
 POST /api/app/{tenant}/services -d 'JSON字符串'
@@ -92,4 +93,40 @@ POST /api/app/{tenant}/services/{service_id}/stop
 ```
 停止service，原理同start
 
+##2、Container API
+使用租户id匹配container的label来实现指定租户的service操作：com.dc.inspur.tenant=<tenant-id>
+###List containers
+```
+GET /api/app/<tenant>/containers
+```
+列出指定租户下所有container  
+测试：
+```
+curl -H 'Content-type:application/json' \ 
+-b 'itoken=<iam itoken>' 
+-X GET http://dev.imaicloud.com/dc/api/app/ukqkrj-nspxdh/containers
+```
 
+###Inspect a container
+```
+GET /api/app/<tenant>/containers/<container-id>
+```
+查询指定container
+
+###Start a container
+```
+POST /api/app/<tenant>/containers/<container-id>/start
+```
+启动container
+
+###Stop a container
+```
+POST /api/app/<tenant>/containers/<container-id>/stop
+```
+停止container
+
+###Remove a container
+```
+DELETE /api/app/<tenant>/containers/<container-id>
+```
+删除container
