@@ -93,12 +93,6 @@ POST /api/app/{tenant}/services/{service_id}/stop
 ```
 停止service，原理同start
 
-###Scale a service
-```
-POST /api/app/{tenant}/services/{service_id}/scale -d '{replicas:<scale number>}'
-```
-修改service的task数
-
 ##2、Container API
 使用租户id匹配container的label来实现指定租户的service操作：com.dc.inspur.tenant=< tenant-id >
 ###List containers
@@ -115,31 +109,32 @@ curl -H 'Content-type:application/json' \
 
 ###Inspect a container
 ```
-GET /api/app/{tenant}/containers/{container-id}
+GET /api/app/{tenant}/containers/{container-id}?node-id={node-id}
 ```
 查询指定container
+查询参数：node-id: docker节点id
 
 ###Start a container
 ```
-POST /api/app/{tenant}/containers/{container-id}/start
+POST /api/app/{tenant}/containers/{container-id}/start?node-id={node-id}
 ```
 启动container
 
 ###Stop a container
 ```
-POST /api/app/{tenant}/containers/{container-id}/stop
+POST /api/app/{tenant}/containers/{container-id}/stop?node-id={node-id}
 ```
 停止container
 
 ###Remove a container
 ```
-DELETE /api/app/{tenant}/containers/{container-id}
+DELETE /api/app/{tenant}/containers/{container-id}?node-id={node-id}
 ```
 删除container
 
 ###Container log
 ```
-GET /api/app/{tenant}/container/{container_id}/logs
+GET /api/app/{tenant}/container/{container_id}/logs?node-id={node-id}
 ```
 查询container的启动log  
 查询参数：
