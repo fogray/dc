@@ -21,7 +21,7 @@ POST /api/app/{tenant}/services -d 'JSON字符串'
 curl -H 'Content-type:application/json' \ 
 -b 'itoken=eyJhbGciOiJOR0lOWE1ENSIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ3d3cuaW1haWNsb3VkLmNvbSIsImlzcyI6ImlhbS5pbnNwdXIuY29tIiwiZXhwIjoxNDc3OTkwODU4NDE4LCJpYXQiOjE0Nzc5ODkwNTg0MTgsImlkIjoiZEo1eXZvSEtTcXFGbUdfaFkxT2wzUSIsInVuYW1lIjoiMTExQHFxLmNvbSIsInVpZCI6IjExMUBxcS5jb20iLCJ0bnQiOiJGV3ZkMmk3ZFJRR3R6TWVDRkNIRzV3IiwiZ3JvdXAiOiIifQ.BQcKI3Y9jYq33_Uu4s8W6Q' \ 
 -X POST https://dev.imaicloud.com/dc/api/app/fwvd2i7drqgtzmecfchg5w/services 
--d '{"Name":"service-tomcat","TaskTemplate":{"ContainerSpec":{"Image":"tomcat"}}, Mode:{Replicated:{Replicas: 1}}, EndpointSpec: {Ports:[{TargetPort:'8080', Protocol:'tcp'}]} }'
+-d '{"Name":"stomcat","TaskTemplate":{"ContainerSpec":{"Image":"tomcat"}}, "Mode":{"Replicated":{"Replicas": 1}}, "EndpointSpec": {"Ports":[{"TargetPort":8080, "Protocol":"tcp"}]} }'
 ```
 ###List service
 ```
@@ -44,7 +44,7 @@ GET /api/app/{tenant}/services/{service_id}
 ```
 curl -H 'Content-type:application/json' \ 
 -b 'itoken=<iam itoken>' 
--X GET http://dev.imaicloud.com/dc/api/app/fwvd2i7drqgtzmecfchg5w/services/21opqnqg8ss5cp9bqq17pyzt1
+-X GET http://dev.imaicloud.com/dc/api/app/fwvd2i7drqgtzmecfchg5w/services/aj1aqoqrqjt53h0dwq9sfsolr
 ```
 
 ###Update a service
@@ -60,8 +60,8 @@ PUT /api/app/{tenant}/services/{service_id}?version=<service-version> -d '更新
 ```
 curl -H 'Content-type:application/json' \ 
 -b 'itoken=<iam itoken>' 
--X PUT http://dev.imaicloud.com/dc/api/app/fwvd2i7drqgtzmecfchg5w/services/21opqnqg8ss5cp9bqq17pyzt1?version=191
--d '{Mode:{Replicated:{Replicas: 2}}}'
+-X PUT http://dev.imaicloud.com/dc/api/app/fwvd2i7drqgtzmecfchg5w/services/aj1aqoqrqjt53h0dwq9sfsolr?version=191
+-d '{"Mode":{"Replicated":{"Replicas": 2}}}'
 ```
 
 ###Delete a service
@@ -73,7 +73,7 @@ DELETE /api/app/{tenant}/services/{service_id}
 ```
 curl -H 'Content-type:application/json' \ 
 -b 'itoken=<iam itoken>' 
--X DELETE http://dev.imaicloud.com/dc/api/app/fwvd2i7drqgtzmecfchg5w/services/21opqnqg8ss5cp9bqq17pyzt1
+-X DELETE http://dev.imaicloud.com/dc/api/app/fwvd2i7drqgtzmecfchg5w/services/aj1aqoqrqjt53h0dwq9sfsolr
 ```
 
 ###List all containers
