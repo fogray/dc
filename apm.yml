@@ -9,7 +9,7 @@ services:
       - /dstack/apm/apm_bi.sql:/docker-entrypoint-initdb.d/apm_bi.sql
     environment:
       - "MYSQL_ROOT_PASSWORD=root"
-  web:
+  web__8080:
     image: apm
     links:
       - "db:database"
