@@ -1,0 +1,22 @@
+version: "3"
+services: 
+  db:
+    image: sameersbn/postgresql
+    ports:
+      - "5432"
+    volumes:
+      - /dstack/itm/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - /dstack/itm/apm_bi.sql:/docker-entrypoint-initdb.d/apm_bi.sql
+    environment:
+      - "MYSQL_ROOT_PASSWORD=root"
+  web__8080:
+    image: apm
+    links:
+      - "db:database"
+    ports:
+      - "8088:8080"
+    depends_on:
+      - db
+    environment:
+      - "DB_HOST=db"
+      - "DB_PWD=root"
