@@ -4,28 +4,32 @@ services:
     image: mysql
     deploy:
       labels:
-        - "ingress=true"
-        - "ingress.dnsname=example.local"
-        - "ingress.targetport=3306"
+        ingress: true
+        ingress.dnsname: example.local
+        ingress.targetport: 3306"
     volumes:
-      - /dstack/apm/init.sql:/docker-entrypoint-initdb.d/init.sql
-      - /dstack/apm/apm_bi.sql:/docker-entrypoint-initdb.d/apm_bi.sql
+      - type: bind
+        source: /dstack/apm/init.sql
+        target: /docker-entrypoint-initdb.d/init.sql
+      - type: bind
+        source: /dstack/apm/apm_bi.sql
+        target: /docker-entrypoint-initdb.d/apm_bi.sql
     environment:
-      - "MYSQL_ROOT_PASSWORD=root"
+      MYSQL_ROOT_PASSWORD: root
     networks:
       - frontends
   web:
     image: apm
     deploy:
       labels:
-        - "ingress=true"
-        - "ingress.dnsname=example.local"
-        - "ingress.targetport=8080"
+        ingress: true
+        ingress.dnsname: example.local
+        ingress.targetport: 8080
     depends_on:
       - db
     environment:
-      - "DB_HOST=db"
-      - "DB_PWD=root"
+      DB_HOST: db
+      DB_PWD: root
     networks:
       - frontends
 networks:
