@@ -8,12 +8,8 @@ services:
         ingress.dnsname: example.local
         ingress.targetport: 3306"
     volumes:
-      - type: bind
-        source: /dstack/apm/init.sql
-        target: /docker-entrypoint-initdb.d/init.sql
-      - type: bind
-        source: /dstack/apm/apm_bi.sql
-        target: /docker-entrypoint-initdb.d/apm_bi.sql
+      - "/dstack/apm/init.sql:/docker-entrypoint-initdb.d/init.sql"
+      - "/dstack/apm/apm_bi.sql:/docker-entrypoint-initdb.d/apm_bi.sql"
     environment:
       MYSQL_ROOT_PASSWORD: root
     networks:
