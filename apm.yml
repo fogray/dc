@@ -6,7 +6,7 @@ services:
       labels:
         ingress: true
         ingress.dnsname: example.local
-        ingress.targetport: 3306"
+        ingress.targetport: 3306
     volumes:
       - "/dstack/apm/init.sql:/docker-entrypoint-initdb.d/init.sql"
       - "/dstack/apm/apm_bi.sql:/docker-entrypoint-initdb.d/apm_bi.sql"
